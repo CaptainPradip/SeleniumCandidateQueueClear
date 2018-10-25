@@ -95,6 +95,9 @@ public class BaseTest {
 
 	}
 
+	/**
+	 * method to quit browser
+	 */
 	@AfterTest
 	public void tearDown() {
 		if (this.driver != null) {
