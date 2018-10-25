@@ -79,6 +79,9 @@ public class BaseTest {
 
 	}
 
+	/**
+	 * method for setup before Test Start
+	 */
 	@BeforeTest
 	public void setUp() {
 		final String browser = PropertyUtil.getProperty("driver");
