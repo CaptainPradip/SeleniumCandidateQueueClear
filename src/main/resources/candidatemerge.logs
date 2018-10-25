@@ -1,0 +1,48 @@
+18:37:18,762  INFO com.citrix.elearning.candidatemerge.test.BaseTest<strong>{1}</strong>:32 - Click on Candidate Queue !!
+18:37:30,719  INFO com.citrix.elearning.candidatemerge.test.BaseTest<strong>{1}</strong>:39 - Total Candidate Count8
+18:37:30,719  INFO com.citrix.elearning.candidatemerge.test.BaseTest<strong>{1}</strong>:40 - Click on Candidate Name Link and get CandidateMatchPage 
+18:37:36,736  INFO com.citrix.elearning.candidatemerge.test.BaseTest<strong>{1}</strong>:45 - Click on Match Last Name Link and get CandidateReconciliationPage 
+18:37:42,371  INFO com.citrix.elearning.candidatemerge.test.BaseTest<strong>{1}</strong>:74 - Create a new Master Record!!
+18:37:56,250 ERROR com.citrix.elearning.candidatemerge.Pages.BasePage<strong>{1}</strong>:140 - element is not visible : [[ChromeDriver: chrome on XP (735ad42e6392bbc89a7290881fd1b506)] -> xpath: //DIV[1]/DIV[2]/span]->stale element reference: element is not attached to the page document
+  (Session info: chrome=70.0.3538.67)
+  (Driver info: chromedriver=2.42.591088 (7b2b2dca23cca0862f674758c9a3933e685c27d5),platform=Windows NT 6.1.7601 SP1 x86_64) (WARNING: The server did not provide any stacktrace information)
+Command duration or timeout: 0 milliseconds
+For documentation on this error, please visit: http://seleniumhq.org/exceptions/stale_element_reference.html
+Build info: version: '3.14.0', revision: 'aacccce0', time: '2018-08-02T20:19:58.91Z'
+System info: host: 'ATMECSINDT-061', ip: '60.60.60.126', os.name: 'Windows 7', os.arch: 'amd64', os.version: '6.1', java.version: '1.8.0_65'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, acceptSslCerts: false, applicationCacheEnabled: false, browserConnectionEnabled: false, browserName: chrome, chrome: {chromedriverVersion: 2.42.591088 (7b2b2dca23cca0..., userDataDir: C:\Users\PRADIP~1.NEM\AppDa...}, cssSelectorsEnabled: true, databaseEnabled: false, goog:chromeOptions: {debuggerAddress: localhost:53646}, handlesAlerts: true, hasTouchScreen: false, javascriptEnabled: true, locationContextEnabled: true, mobileEmulationEnabled: false, nativeEvents: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: XP, platformName: XP, rotatable: false, setWindowRect: true, takesHeapSnapshot: true, takesScreenshot: true, unexpectedAlertBehaviour: , unhandledPromptBehavior: , version: 70.0.3538.67, webStorageEnabled: true}
+Session ID: 735ad42e6392bbc89a7290881fd1b506
+18:37:56,250 ERROR com.citrix.elearning.candidatemerge.test.BaseTest<strong>{1}</strong>:94 - 
+18:37:56,253  INFO com.citrix.elearning.candidatemerge.test.BaseTest<strong>{1}</strong>:32 - Click on Candidate Queue !!
+18:38:07,116  INFO com.citrix.elearning.candidatemerge.test.BaseTest<strong>{1}</strong>:39 - Total Candidate Count8
+18:38:07,116  INFO com.citrix.elearning.candidatemerge.test.BaseTest<strong>{1}</strong>:40 - Click on Candidate Name Link and get CandidateMatchPage 
+18:38:13,218  INFO com.citrix.elearning.candidatemerge.test.BaseTest<strong>{1}</strong>:45 - Click on Match Last Name Link and get CandidateReconciliationPage 
+18:38:18,886  INFO com.citrix.elearning.candidatemerge.test.BaseTest<strong>{1}</strong>:74 - Create a new Master Record!!
+18:38:32,624 ERROR com.citrix.elearning.candidatemerge.test.BaseTest<strong>{1}</strong>:94 - stale element reference: element is not attached to the page document
+  (Session info: chrome=70.0.3538.67)
+  (Driver info: chromedriver=2.42.591088 (7b2b2dca23cca0862f674758c9a3933e685c27d5),platform=Windows NT 6.1.7601 SP1 x86_64) (WARNING: The server did not provide any stacktrace information)
+Command duration or timeout: 0 milliseconds
+For documentation on this error, please visit: http://seleniumhq.org/exceptions/stale_element_reference.html
+Build info: version: '3.14.0', revision: 'aacccce0', time: '2018-08-02T20:19:58.91Z'
+System info: host: 'ATMECSINDT-061', ip: '60.60.60.126', os.name: 'Windows 7', os.arch: 'amd64', os.version: '6.1', java.version: '1.8.0_65'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, acceptSslCerts: false, applicationCacheEnabled: false, browserConnectionEnabled: false, browserName: chrome, chrome: {chromedriverVersion: 2.42.591088 (7b2b2dca23cca0..., userDataDir: C:\Users\PRADIP~1.NEM\AppDa...}, cssSelectorsEnabled: true, databaseEnabled: false, goog:chromeOptions: {debuggerAddress: localhost:53646}, handlesAlerts: true, hasTouchScreen: false, javascriptEnabled: true, locationContextEnabled: true, mobileEmulationEnabled: false, nativeEvents: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: XP, platformName: XP, rotatable: false, setWindowRect: true, takesHeapSnapshot: true, takesScreenshot: true, unexpectedAlertBehaviour: , unhandledPromptBehavior: , version: 70.0.3538.67, webStorageEnabled: true}
+Session ID: 735ad42e6392bbc89a7290881fd1b506
+18:38:32,628  INFO com.citrix.elearning.candidatemerge.test.BaseTest<strong>{1}</strong>:32 - Click on Candidate Queue !!
+18:38:43,245  INFO com.citrix.elearning.candidatemerge.test.BaseTest<strong>{1}</strong>:39 - Total Candidate Count8
+18:38:43,246  INFO com.citrix.elearning.candidatemerge.test.BaseTest<strong>{1}</strong>:40 - Click on Candidate Name Link and get CandidateMatchPage 
+18:38:49,439  INFO com.citrix.elearning.candidatemerge.test.BaseTest<strong>{1}</strong>:45 - Click on Match Last Name Link and get CandidateReconciliationPage 
+18:38:55,126  INFO com.citrix.elearning.candidatemerge.test.BaseTest<strong>{1}</strong>:74 - Create a new Master Record!!
+18:39:09,278 ERROR com.citrix.elearning.candidatemerge.Pages.BasePage<strong>{1}</strong>:140 - element is not visible : [[ChromeDriver: chrome on XP (735ad42e6392bbc89a7290881fd1b506)] -> xpath: //DIV[1]/DIV[2]/span]->stale element reference: element is not attached to the page document
+  (Session info: chrome=70.0.3538.67)
+  (Driver info: chromedriver=2.42.591088 (7b2b2dca23cca0862f674758c9a3933e685c27d5),platform=Windows NT 6.1.7601 SP1 x86_64) (WARNING: The server did not provide any stacktrace information)
+Command duration or timeout: 0 milliseconds
+For documentation on this error, please visit: http://seleniumhq.org/exceptions/stale_element_reference.html
+Build info: version: '3.14.0', revision: 'aacccce0', time: '2018-08-02T20:19:58.91Z'
+System info: host: 'ATMECSINDT-061', ip: '60.60.60.126', os.name: 'Windows 7', os.arch: 'amd64', os.version: '6.1', java.version: '1.8.0_65'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, acceptSslCerts: false, applicationCacheEnabled: false, browserConnectionEnabled: false, browserName: chrome, chrome: {chromedriverVersion: 2.42.591088 (7b2b2dca23cca0..., userDataDir: C:\Users\PRADIP~1.NEM\AppDa...}, cssSelectorsEnabled: true, databaseEnabled: false, goog:chromeOptions: {debuggerAddress: localhost:53646}, handlesAlerts: true, hasTouchScreen: false, javascriptEnabled: true, locationContextEnabled: true, mobileEmulationEnabled: false, nativeEvents: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: XP, platformName: XP, rotatable: false, setWindowRect: true, takesHeapSnapshot: true, takesScreenshot: true, unexpectedAlertBehaviour: , unhandledPromptBehavior: , version: 70.0.3538.67, webStorageEnabled: true}
+Session ID: 735ad42e6392bbc89a7290881fd1b506
+18:39:09,279 ERROR com.citrix.elearning.candidatemerge.test.BaseTest<strong>{1}</strong>:94 - 
+18:39:09,280  INFO com.citrix.elearning.candidatemerge.test.BaseTest<strong>{1}</strong>:32 - Click on Candidate Queue !!
