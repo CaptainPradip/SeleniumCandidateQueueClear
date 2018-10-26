@@ -44,22 +44,25 @@ public class BasePage {
 	 *            the element text to set
 	 */
 	public void clearAndType(WebElement element, String text) {
+
 		if (isDisplyed(element)) {
 			highLighterMethod(element);
 			element.clear();
 			element.sendKeys(text);
+			logger.debug("send key to " + element.toString() + "---->" + text);
 
 		}
 	}
 
 	/**
 	 * method for click
-	 * 
+	 *
 	 * @param element
 	 */
 	public void click(WebElement element) {
 		if (isDisplyed(element)) {
 			element.click();
+			logger.debug("click on " + element.toString());
 		}
 	}
 
@@ -67,16 +70,18 @@ public class BasePage {
 	 * Click On Alert Cancel Button
 	 */
 	public void clickOnAlertCancel() {
-
-		this.driver.switchTo().alert().dismiss();
+		if (isAlertPresent()) {
+			this.driver.switchTo().alert().dismiss();
+		}
 	}
 
 	/**
 	 * Click on Alert OK Button
 	 */
 	public void clickOnAlertOk() {
-
-		this.driver.switchTo().alert().accept();
+		if (isAlertPresent()) {
+			this.driver.switchTo().alert().accept();
+		}
 	}
 
 	/**
@@ -104,6 +109,24 @@ public class BasePage {
 		JavascriptExecutor js = (JavascriptExecutor) this.driver;
 		js.executeScript("arguments[0].setAttribute('style', 'background: yellow; border: 2px solid red;');",
 				webElement);
+
+	}
+
+	/**
+	 * method to check Alert is Present
+	 *
+	 * @return return true if alert is present
+	 */
+	public boolean isAlertPresent() {
+		try {
+			WebDriverWait wait = new WebDriverWait(this.driver, 20);
+			wait.until(ExpectedConditions.alertIsPresent());
+			return true;
+
+		} catch (TimeoutException e) {
+			logger.error("Alert  is not visible : ");
+			return false;
+		}
 
 	}
 
@@ -154,8 +177,9 @@ public class BasePage {
 	 *            {@link Keys}}
 	 */
 	public void sendKey(WebElement element, Keys Key) {
-
-		element.sendKeys(Key);
+		if (isDisplyed(element)) {
+			element.sendKeys(Key);
+		}
 	}
 
 	/**
@@ -205,9 +229,9 @@ public class BasePage {
 		wait.until(new Function<WebDriver, Boolean>() {
 			@Override
 			public Boolean apply(WebDriver t) {
-
-				return ((JavascriptExecutor) t).executeScript("return document.readyState").toString()
-						.equals("complete");
+				String status = ((JavascriptExecutor) t).executeScript("return document.readyState").toString();
+				System.out.println(status);
+				return status.equals("complete");
 			};
 		});
 	}

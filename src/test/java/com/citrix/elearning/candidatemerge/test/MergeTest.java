@@ -25,9 +25,9 @@ public class MergeTest extends BaseTest {
 	@Test(dataProvider = "CandidateCount")
 	public void mergeCandidateQueueData(int count) {
 		CandidateProfile profile = new CandidateProfile();
+		long startTime = System.currentTimeMillis();
 		try {
 
-			long startTime = System.currentTimeMillis();
 			logger.info("Click on Candidate Queue !!");
 			this.candidateQueuePage = this.candidateQueuePage.clickOnCandidateLink();
 
@@ -96,6 +96,11 @@ public class MergeTest extends BaseTest {
 			System.out.println(profile);
 		} catch (Exception e) {
 			profile.setReason(e.getMessage());
+			long endTime = System.currentTimeMillis();
+
+			String excutionTime = DateConverter.millisecondsToTime(endTime - startTime);
+			profile.setExcutionTime(excutionTime);
+
 			logger.error(e.getMessage());
 			this.candidateProfile.add(profile);
 			System.out.println(profile);
