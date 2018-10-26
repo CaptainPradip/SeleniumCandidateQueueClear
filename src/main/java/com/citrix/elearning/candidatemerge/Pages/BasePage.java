@@ -177,8 +177,9 @@ public class BasePage {
 	 *            {@link Keys}}
 	 */
 	public void sendKey(WebElement element, Keys Key) {
-
-		element.sendKeys(Key);
+		if (isDisplyed(element)) {
+			element.sendKeys(Key);
+		}
 	}
 
 	/**
