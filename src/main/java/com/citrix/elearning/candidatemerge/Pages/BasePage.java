@@ -53,7 +53,8 @@ public class BasePage {
 	}
 
 	/**
-	 *
+	 * method for click
+	 * 
 	 * @param element
 	 */
 	public void click(WebElement element) {
@@ -109,7 +110,7 @@ public class BasePage {
 	/**
 	 *
 	 * @param element
-	 * @return
+	 * @return return true if element in DOM
 	 */
 
 	public boolean isDisplyed(By element) {
@@ -130,7 +131,7 @@ public class BasePage {
 	/**
 	 *
 	 * @param element
-	 * @return
+	 * @return return true if element in DOM
 	 */
 	public boolean isDisplyed(WebElement element) {
 		try {
@@ -157,6 +158,12 @@ public class BasePage {
 		element.sendKeys(Key);
 	}
 
+	/**
+	 * Method for check element is present in DOM or not
+	 *
+	 * @param webElement
+	 * @param timeoutInSeconds
+	 */
 	public void waitUntilElementToBeClickable(By webElement, long timeoutInSeconds) {
 		try {
 			WebDriverWait wait = new WebDriverWait(this.driver, timeoutInSeconds);
@@ -198,7 +205,7 @@ public class BasePage {
 		wait.until(new Function<WebDriver, Boolean>() {
 			@Override
 			public Boolean apply(WebDriver t) {
-				System.out.println("Waiting");
+
 				return ((JavascriptExecutor) t).executeScript("return document.readyState").toString()
 						.equals("complete");
 			};
