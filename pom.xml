@@ -68,7 +68,7 @@
 			<configuration>
                    <!-- TestNG Suite XML files list for test execution -->
                    <suiteXmlFiles>
-                       <suiteXmlFile>src/test/resources/testng.xml</suiteXmlFile>
+                       <suiteXmlFile>src\test\resources\suitefile\MergeTest.xml</suiteXmlFile>
                     </suiteXmlFiles>
                </configuration>
 		</plugin>
