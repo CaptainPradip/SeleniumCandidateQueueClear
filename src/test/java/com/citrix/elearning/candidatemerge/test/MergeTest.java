@@ -12,8 +12,7 @@ import com.citrix.elearning.candidatemerge.utility.DateConverter;
 
 /**
  *
- * @author Pradip.Nemane
- *
+ * @author Pradip.Nemane class for
  */
 
 public class MergeTest extends BaseTest {
