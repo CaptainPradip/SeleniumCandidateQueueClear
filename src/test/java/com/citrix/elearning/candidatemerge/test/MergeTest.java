@@ -44,6 +44,7 @@ public class MergeTest extends BaseTest {
 			profile.setLastName(firstAndLastName.split(",")[1]);
 			logger.info("Click on Match Last Name Link and get CandidateReconciliationPage ");
 			CandidateReconciliationPage candidateProfilePage = candidateMatchPage.clickOnMatchLastName();
+			logger.info("Verifying Inbound email with master email ");
 
 			if (candidateProfilePage.getInboundPrimaryEmail().equals(candidateProfilePage.getMasterPrimaryEmail())) {
 
@@ -59,6 +60,7 @@ public class MergeTest extends BaseTest {
 
 					e.printStackTrace();
 				}
+				logger.info("Verifying Inbound Date with master Date ");
 
 				if (inBoundDate.after(masterDate)) {
 					candidateProfilePage.clickOnNewMasterLink();
@@ -74,9 +76,13 @@ public class MergeTest extends BaseTest {
 				logger.info("Create a new Master Record!!");
 
 			}
+			logger.info("Click on alert cancel");
+
 			candidateProfilePage.clickOnAlertCancel();
 			this.candidateQueuePage = this.candidateQueuePage.clickOnCandidateLink();
 			this.candidateQueuePage.setNameSearchTextBoxAndSearch(firstAndLastName);
+			logger.info("Verifying candidate profile is removed from queue ");
+
 			if (this.candidateQueuePage.isMergeCandidate(updatedDate, firstAndLastName)) {
 				profile.setTestResult("Pass");
 			} else {
@@ -93,6 +99,7 @@ public class MergeTest extends BaseTest {
 			profile.setReason(e.getMessage());
 			logger.error(e.getMessage());
 			this.candidateProfile.add(profile);
+			System.out.println(profile);
 
 		}
 	}
