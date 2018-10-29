@@ -5,6 +5,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
+ * This class to for date conversion.
  *
  * @author Pradip.Nemane
  *
@@ -27,6 +28,13 @@ public class DateConverter {
 
 	}
 
+	/**
+	 * Method for get time in mm:ss sec format.
+	 *
+	 * @param milliseconds
+	 *            time
+	 * @return time in mm:ss sec.
+	 */
 	public static String millisecondsToTime(long milliseconds) {
 		long minutes = (milliseconds / 1000) / 60;
 		long seconds = (milliseconds / 1000) % 60;

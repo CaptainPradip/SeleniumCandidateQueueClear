@@ -19,6 +19,12 @@ import com.citrix.elearning.candidatemerge.utility.ExcelUtils;
 import com.citrix.elearning.candidatemerge.utility.MailService;
 import com.citrix.elearning.candidatemerge.utility.PropertyUtil;
 
+/**
+ * this Test Class is for provide date for test cases.set driver ,get driver
+ *
+ * @author Pradip.Nemane
+ *
+ */
 public class BaseTest {
 
 	static Logger logger = Logger.getLogger(BaseTest.class.getName());
@@ -31,11 +37,10 @@ public class BaseTest {
 	 * @return Object[][] where first column contains 'author' and second column
 	 *         contains 'searchKey'
 	 */
-
 	@DataProvider(name = "CandidateCount")
 	public Object[][] getCandidateCount() {
-		Object[][] count = new Object[this.candidateQueuePage.getTotalNumberofCandidatePresent()][1];
-		for (int i = 0; i < this.candidateQueuePage.getTotalNumberofCandidatePresent(); i++) {
+		Object[][] count = new Object[this.candidateQueuePage.getTotalNumberofCandidateRecord()][1];
+		for (int i = 0; i < this.candidateQueuePage.getTotalNumberofCandidateRecord(); i++) {
 			count[i][0] = i;
 
 		}
@@ -47,7 +52,7 @@ public class BaseTest {
 	 * method for get driver instance
 	 *
 	 * @param browserName
-	 * @return
+	 * @return {@link WebDriver}
 	 */
 	private WebDriver getWebDriver(String browserName) {
 		if (browserName.equals("chrome")) {
@@ -106,7 +111,7 @@ public class BaseTest {
 		if (this.driver != null) {
 			this.driver.quit();
 		}
-		// mailTestCaseResult(this.candidateProfile);
+		mailTestCaseResult(this.candidateProfile);
 	}
 
 }

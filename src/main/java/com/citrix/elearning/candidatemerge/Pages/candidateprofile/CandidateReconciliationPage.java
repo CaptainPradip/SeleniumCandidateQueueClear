@@ -8,6 +8,7 @@ import org.openqa.selenium.support.PageFactory;
 import com.citrix.elearning.candidatemerge.Pages.BasePage;
 
 /**
+ * This class for Verifying Candidate Inbount and Master Details.
  *
  * @author Pradip.Nemane
  *
@@ -15,49 +16,49 @@ import com.citrix.elearning.candidatemerge.Pages.BasePage;
 public class CandidateReconciliationPage extends BasePage {
 
 	/**
-	 * Don't Apply Inbound Record to Master Record link WebElement
+	 * WebElement for Don't Apply Inbound Record to Master Record link .
 	 */
 	@FindBy(linkText = "Don't Apply Inbound Record to Master Record")
 	WebElement dontApplyToMasterLink;
 
 	/**
-	 * inBound Primary Email WebElement
+	 * WebElement for inBound Primary Email WebElement.
 	 */
 	@FindBy(xpath = "//table[@id='emailTableA']/tbody/tr/td/table/tbody/tr[2]/td[2]")
 	WebElement inboundPrimaryEmail;
 
 	/**
-	 * Apply Inbound Record to Master Record link WebElement
+	 * WebElement for Apply Inbound Record to Master Record link WebElement.
 	 */
 	@FindBy(linkText = "Apply Inbound Record to Master Record")
 	WebElement inBoundToMasterLink;
 
 	/**
-	 * inBound Updated Date WebElement
+	 * WebElement for inBound Updated Date.
 	 */
 	@FindBy(xpath = "//TBODY[1]/TR[5]/TD[1]/TABLE[1]/TBODY[1]/TR[1]/TD[2]")
 	WebElement inboundUpdateDate;
 
 	/**
-	 * Master Primary WebElement
+	 * WebElement for Master Primary.
 	 */
 	@FindBy(xpath = "//table[@id='emailTableB']/tbody/tr/td/table/tbody/tr[2]/td[2]")
 	WebElement masterPrimaryEmail;
 
 	/**
-	 * Master updated Date WebElement
+	 * WebElement for Master updated Date.
 	 */
 	@FindBy(xpath = "//TBODY[1]/TR[5]/TD[5]//TABLE[1]/TBODY[1]/TR[1]/TD[2]")
 	WebElement masterUpdateDate;
 
 	/**
-	 * Create a new Master Record link WebElement
+	 * WebElement for Create a new Master Record link.
 	 */
 	@FindBy(linkText = "Create a new Master Record")
 	WebElement newMasterLink;
 
 	/**
-	 * Constructor initialization
+	 * Constructor initialization.
 	 *
 	 * @param driver
 	 *            {@link WebDriver}
@@ -68,7 +69,7 @@ public class CandidateReconciliationPage extends BasePage {
 	}
 
 	/**
-	 * for click on Dont Apply to master Link
+	 * Method for click on dont apply to master Link.
 	 */
 	public void clickOnDontApplyToMasterLink() {
 		highLighterMethod(this.dontApplyToMasterLink);
@@ -76,7 +77,7 @@ public class CandidateReconciliationPage extends BasePage {
 	}
 
 	/**
-	 * for click on inbound to master Link
+	 * Method for click on inbound to master Link.
 	 */
 	public void clickOnInBoundToMasterLink() {
 		highLighterMethod(this.inBoundToMasterLink);
@@ -84,7 +85,7 @@ public class CandidateReconciliationPage extends BasePage {
 	}
 
 	/**
-	 * for click on Apply to master Link
+	 * Method for click on apply to master Link.
 	 */
 	public void clickOnNewMasterLink() {
 		highLighterMethod(this.newMasterLink);
@@ -92,9 +93,9 @@ public class CandidateReconciliationPage extends BasePage {
 	}
 
 	/**
-	 * get InBound primary Email text
+	 * Method for get InBound primary Email text.
 	 *
-	 * @return {@link String}
+	 * @return {@link String} inbound primary email
 	 */
 	public String getInboundPrimaryEmail() {
 
@@ -103,29 +104,27 @@ public class CandidateReconciliationPage extends BasePage {
 	}
 
 	/**
-	 * get inBound Updated Date in text
+	 * Method for get inBound Updated Date in text.
 	 *
 	 * @return inbound update date.
 	 */
-
 	public String getInboundUpdateDate() {
 		return getText(this.inboundUpdateDate);
 	}
 
 	/**
-	 * get master email in text
+	 * method get master email in text.
 	 *
-	 * @return
+	 * @return master primary email.
 	 */
-
 	public String getMasterPrimaryEmail() {
 		return getText(this.masterPrimaryEmail);
 	}
 
 	/**
-	 * get master update date in text
+	 * Method for get master update date in text.
 	 *
-	 * @return
+	 * @return master update Date.
 	 */
 	public String getMasterUpdateDate() {
 		return getText(this.masterUpdateDate);

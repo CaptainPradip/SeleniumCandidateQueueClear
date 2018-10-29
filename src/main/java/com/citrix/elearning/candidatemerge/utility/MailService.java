@@ -5,6 +5,7 @@ import java.io.FileInputStream;
 import java.io.IOException;
 
 import org.apache.commons.codec.binary.Base64;
+import org.apache.log4j.Logger;
 import org.apache.poi.util.IOUtils;
 
 import com.sendgrid.Attachments;
@@ -16,8 +17,25 @@ import com.sendgrid.Request;
 import com.sendgrid.Response;
 import com.sendgrid.SendGrid;
 
+/**
+ * This Class for send mail.
+ *
+ * @author Pradip.Nemane
+ *
+ */
 public class MailService {
+	static Logger logger = Logger.getLogger(MailService.class);
 
+	/**
+	 * Method for send test result to mail and with attached excel file.
+	 *
+	 * @param fromEmail
+	 * @param subjectMail
+	 * @param toMail
+	 * @param filePath
+	 * @return {@link Response}
+	 * @throws IOException
+	 */
 	public static Response sendMail(String fromEmail, String subjectMail, String toMail, String filePath)
 			throws IOException {
 		Email from = new Email(fromEmail);
@@ -47,10 +65,15 @@ public class MailService {
 			request.setEndpoint("mail/send");
 			request.setBody(mail.build());
 			response = sg.api(request);
-			System.out.println(response.getStatusCode());
-			System.out.println(response.getBody());
-			System.out.println(response.getHeaders());
+			MailService.logger.info("Email is sent to" + toMail);
+			MailService.logger.info(response.getStatusCode());
+			MailService.logger.info(response.getBody());
+			MailService.logger.info(response.getHeaders());
+			// System.out.println(response.getStatusCode());
+			// System.out.println(response.getBody());
+			// System.out.println(response.getHeaders());
 		} catch (IOException ex) {
+			MailService.logger.error(ex.getMessage());
 			throw ex;
 		}
 		return response;

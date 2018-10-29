@@ -9,31 +9,32 @@ import com.citrix.elearning.candidatemerge.Pages.BasePage;
 import com.citrix.elearning.candidatemerge.Pages.candidatequeue.CandidateQueuePage;
 
 /**
+ * This Class for Login Page.
  *
  * @author Pradip.Nemane
  *
  */
 public class LoginPage extends BasePage {
 	/**
-	 * Web element for password textBox
+	 * Web element for password textBox.
 	 */
 	@FindBy(name = "password")
 	WebElement passwordTextBox;
 
 	/**
-	 * Web element for submit Button
+	 * Web element for submit Button.
 	 */
 	@FindBy(name = "submit")
 	WebElement submitButton;
 
 	/**
-	 * Web element for username textBox
+	 * Web element for username textBox.
 	 */
 	@FindBy(name = "username")
 	WebElement usernameTextBox;
 
 	/**
-	 * initialize Web Driver
+	 * initialize Web Driver.
 	 *
 	 * @param driver
 	 *            {@link WebDriver}}
@@ -44,19 +45,14 @@ public class LoginPage extends BasePage {
 	}
 
 	/**
-	 *
-	 * @param driver
-	 */
-
-	/**
-	 * click on submit button
+	 * Method for click on submit button.
 	 */
 	public void clickOnSubmitButton() {
 		click(this.submitButton);
 	}
 
 	/**
-	 * for login
+	 * Method for login to application.
 	 *
 	 * @param username
 	 *            {@link username}
@@ -67,7 +63,6 @@ public class LoginPage extends BasePage {
 	 *
 	 */
 	public CandidateQueuePage login(String username, String password) {
-
 		setusernameTextBox(username);
 		setPasswordTextBox(password);
 		clickOnSubmitButton();
@@ -91,9 +86,6 @@ public class LoginPage extends BasePage {
 	 * @param username
 	 */
 	public void setusernameTextBox(String username) {
-
 		clearAndType(this.usernameTextBox, username);
-
 	}
-
 }

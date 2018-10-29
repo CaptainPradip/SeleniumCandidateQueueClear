@@ -1,6 +1,5 @@
 package com.citrix.elearning.candidatemerge.Pages.candidatematch;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -10,39 +9,39 @@ import com.citrix.elearning.candidatemerge.Pages.BasePage;
 import com.citrix.elearning.candidatemerge.Pages.candidateprofile.CandidateReconciliationPage;
 
 /**
+ * This class for get Matching page Candidate details.
  *
  * @author Pradip.Nemane
  *
  */
 public class CandidateMatchPage extends BasePage {
-	By by = By.id("//TABLE[2]/TBODY[1]/TR[4]/TD[9]");
 
 	/**
-	 * Web Element For CandidateId
+	 * Web Element For CandidateId.
 	 */
 	@FindBy(xpath = "//TABLE[2]/TBODY[1]/TR[4]/TD[9]")
 	WebElement matchCandidateIdLable;
 
 	/**
-	 * Web Element for match Email
+	 * Web Element for match Email.
 	 */
 	@FindBy(xpath = "//TABLE[2]/TBODY[1]/TR[4]/TD[7]")
 	WebElement matchEmailLable;
 
 	/**
-	 * Web Element for First Name match
+	 * Web Element for First Name match.
 	 */
 	@FindBy(xpath = "//TABLE[2]/TBODY[1]/TR[4]/TD[3]")
 	WebElement matchFirstNameLink;
 
 	/**
-	 * Web element for Last Name Match
+	 * Web element for Last Name Match.
 	 */
 	@FindBy(xpath = "//TABLE[2]/TBODY[1]/TR[4]/TD[5]")
 	WebElement matchLastNameLink;
 
 	/**
-	 * Constructor initialization
+	 * Constructor initialization.
 	 *
 	 * @param driver
 	 *            {@link WebDriver}}
@@ -53,7 +52,7 @@ public class CandidateMatchPage extends BasePage {
 	}
 
 	/**
-	 * Click on Match Last Name
+	 * Click on Match Last Name.
 	 *
 	 * @return {@link CandidateProfileMatchPage}
 	 */
@@ -64,40 +63,39 @@ public class CandidateMatchPage extends BasePage {
 	}
 
 	/**
-	 * method to get candidate id
+	 * method to get candidate id.
 	 *
-	 * @return candidate id
+	 * @return candidate id.
 	 */
 	public String getCandidateId() {
 		return getText(this.matchCandidateIdLable);
 	}
 
 	/**
-	 * method to get email
+	 * method to get email.
 	 *
-	 * @return email
+	 * @return email .
 	 */
 	public String getEmail() {
 		return getText(this.matchEmailLable);
 	}
 
 	/**
-	 * method for get first name text
+	 * method for get first name text.
 	 *
-	 * @return first name
+	 * @return first name.
 	 */
 	public String getFirstName() {
 		return getText(this.matchFirstNameLink);
 	}
 
 	/**
-	 * method to return Last name text
-	 *
-	 * @return last name
+	 * method to return Last name text.
+	 * 
+	 * @return last name.
 	 */
-	public String getlastName() {
+	public String getLastName() {
 		return getText(this.matchLastNameLink);
-
 	}
 
 }

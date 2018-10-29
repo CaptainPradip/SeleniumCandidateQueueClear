@@ -13,163 +13,154 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 /**
+ * This class for all generic Method call on all pages.
  *
- * @author Pradip.Nemane this class for all generic Method call on all pages
+ * @author Pradip.Nemane
  */
 public class BasePage {
-	static Logger logger = Logger.getLogger(BasePage.class.getName());
+	static Logger logger = Logger.getLogger(BasePage.class);
 
 	/**
-	 * instance variable for WebDriver.
+	 * Instance variable for WebDriver.
 	 */
 	protected WebDriver driver;
 
 	/**
-	 * Constructor to init WebDriver
+	 * Constructor to init WebDriver.
 	 *
 	 * @param driver
-	 *            {@link WebDriver }}
+	 *            {@link WebDriver}
+	 *
 	 */
 	public BasePage(WebDriver driver) {
 		this.driver = driver;
-
 	}
 
 	/**
-	 * Method to clear and type text
-	 *
-	 * @param element
-	 *            {@link WebElement}}
-	 * @param text
-	 *            the element text to set
+	 * Click on Alert OK Button.
 	 */
-	public void clearAndType(WebElement element, String text) {
-
-		if (isDisplyed(element)) {
-			highLighterMethod(element);
-			element.clear();
-			element.sendKeys(text);
-			logger.debug("send key to " + element.toString() + "---->" + text);
-
-		}
-	}
-
-	/**
-	 * method for click
-	 *
-	 * @param element
-	 */
-	public void click(WebElement element) {
-		if (isDisplyed(element)) {
-			element.click();
-			logger.debug("click on " + element.toString());
-		}
-	}
-
-	/**
-	 * Click On Alert Cancel Button
-	 */
-	public void clickOnAlertCancel() {
-		if (isAlertPresent()) {
-			this.driver.switchTo().alert().dismiss();
-		}
-	}
-
-	/**
-	 * Click on Alert OK Button
-	 */
-	public void clickOnAlertOk() {
+	public void alertAccept() {
 		if (isAlertPresent()) {
 			this.driver.switchTo().alert().accept();
 		}
 	}
 
 	/**
-	 * to get WebElement Visible Text
+	 * Click On Alert Cancel Button.
+	 */
+	public void alertDismiss() {
+		if (isAlertPresent()) {
+			this.driver.switchTo().alert().dismiss();
+		}
+	}
+
+	/**
+	 * Method to clear and type text.
 	 *
 	 * @param element
-	 * @return {@link String}
+	 *            {@link WebElement}
+	 *
+	 * @param text
+	 *            the element text to set.
+	 */
+	public void clearAndType(WebElement element, String text) {
+		highLighterMethod(element);
+		element.clear();
+		element.sendKeys(text);
+		BasePage.logger.info("send key to " + element.toString() + "---->" + text);
+	}
+
+	/**
+	 * Method for click on web element.
+	 *
+	 * @param element
+	 *            {@link WebElement}
+	 */
+	public void click(WebElement element) {
+		element.click();
+		BasePage.logger.info("click on " + element.toString());
+	}
+
+	/**
+	 * Method to get WebElement Visible Text.
+	 *
+	 * @param element
+	 *            {@link WebElement}
+	 * @return text of web element.
 	 */
 	public String getText(WebElement element) {
-		if (isDisplyed(element)) {
+		try {
 			return element.getText().trim();
+		} catch (final Exception e) {
+			BasePage.logger.error("element is not visible : " + element.toString() + "->" + e.getMessage());
+			return null;
 		}
-		return null;
-
 	}
 
 	/**
-	 * method to high light WebElement
+	 * Method to high light WebElement.
 	 *
-	 * @param driver
 	 * @param webElement
+	 *            {@link WebElement}
 	 */
 	public void highLighterMethod(WebElement webElement) {
-
-		JavascriptExecutor js = (JavascriptExecutor) this.driver;
+		final JavascriptExecutor js = (JavascriptExecutor) this.driver;
 		js.executeScript("arguments[0].setAttribute('style', 'background: yellow; border: 2px solid red;');",
 				webElement);
-
 	}
 
 	/**
-	 * method to check Alert is Present
+	 * Method to check Alert is Present.
 	 *
-	 * @return return true if alert is present
+	 * @return return true if alert is present else false.
 	 */
 	public boolean isAlertPresent() {
 		try {
-			WebDriverWait wait = new WebDriverWait(this.driver, 20);
+			final WebDriverWait wait = new WebDriverWait(this.driver, 20);
 			wait.until(ExpectedConditions.alertIsPresent());
 			return true;
-
-		} catch (TimeoutException e) {
-			logger.error("Alert  is not visible : ");
+		} catch (final TimeoutException e) {
+			BasePage.logger.error("Alert  is not visible : " + e.getMessage());
 			return false;
 		}
-
 	}
 
 	/**
+	 * Method for to check Web element is Present in DOM.
 	 *
 	 * @param element
-	 * @return return true if element in DOM
+	 *            {@link By}
+	 * @return true if element in DOM present else false.
 	 */
-
 	public boolean isDisplyed(By element) {
 		try {
-
 			this.driver.findElement(element);
 			return true;
+		} catch (final Exception e) {
 
-		} catch (Exception e) {
-
-			logger.error("element is not visible : " + element.toString() + "->" + e.getMessage());
-
+			BasePage.logger.error("element is not visible : " + element.toString() + "->" + e.getMessage());
 		}
 		return false;
-
 	}
 
 	/**
+	 * Method for check Web Element is present in DOM Or not.
 	 *
 	 * @param element
-	 * @return return true if element in DOM
+	 *            {@link WebElement}
+	 * @return true if element in DOM present else false.
 	 */
 	public boolean isDisplyed(WebElement element) {
 		try {
-
 			return element.isDisplayed();
-
-		} catch (Exception e) {
-			logger.error("element is not visible : " + element.toString() + "->" + e.getMessage());
+		} catch (final Exception e) {
+			BasePage.logger.error("element is not visible : " + element.toString() + "->" + e.getMessage());
 		}
 		return false;
-
 	}
 
 	/**
-	 * for send key to Web Element
+	 * Method for send key to Web Element.
 	 *
 	 * @param element
 	 *            {@link WebElement}}
@@ -183,79 +174,68 @@ public class BasePage {
 	}
 
 	/**
-	 * Method for check element is present in DOM or not
+	 * Method for check element is present in DOM or not.
 	 *
 	 * @param webElement
+	 *            {@link WebElement}
 	 * @param timeoutInSeconds
 	 */
 	public void waitUntilElementToBeClickable(By webElement, long timeoutInSeconds) {
 		try {
-			WebDriverWait wait = new WebDriverWait(this.driver, timeoutInSeconds);
+			final WebDriverWait wait = new WebDriverWait(this.driver, timeoutInSeconds);
 			wait.until(ExpectedConditions.elementToBeClickable(webElement));
-		} catch (TimeoutException e) {
-			logger.error(
-					"Timeout waiting for webelement to be present" + webElement.toString() + "->" + e.getMessage());
-		} catch (Exception e) {
-			logger.error("web element not be present " + webElement.toString() + "->" + e.getMessage());
+		} catch (final TimeoutException e) {
+			BasePage.logger
+					.error("Waiting Timeout finish for webelement" + webElement.toString() + "->" + e.getMessage());
 		}
 	}
 
 	/**
+	 * method for Wait until element to be clickable.
 	 *
 	 * @param webElement
+	 *            {@link WebElement}
 	 * @param timeoutInSeconds
-	 * @throws Exception
 	 */
 	public void waitUntilElementToBeClickable(WebElement webElement, long timeoutInSeconds) {
 		try {
-			WebDriverWait wait = new WebDriverWait(this.driver, timeoutInSeconds);
+			final WebDriverWait wait = new WebDriverWait(this.driver, timeoutInSeconds);
 			wait.until(ExpectedConditions.elementToBeClickable(webElement));
-		} catch (TimeoutException e) {
-			logger.error(
-					"Timeout waiting for webelement to be present " + webElement.toString() + "->" + e.getMessage());
-		} catch (Exception e) {
-			logger.error("web element not be present " + webElement.toString() + "->" + e.getMessage());
+		} catch (final TimeoutException e) {
+			BasePage.logger
+					.error("Waiting Timeout finish for webelement" + webElement.toString() + "->" + e.getMessage());
 		}
-
 	}
 
 	/**
-	 * method for wait page load
-	 *
-	 * @return
+	 * method for wait until page load.
 	 */
 	public void waitUntilPageLoad() {
 		final WebDriverWait wait = new WebDriverWait(this.driver, 30);
 		wait.until(new Function<WebDriver, Boolean>() {
 			@Override
 			public Boolean apply(WebDriver t) {
-				String status = ((JavascriptExecutor) t).executeScript("return document.readyState").toString();
-				System.out.println(status);
+				final String status = ((JavascriptExecutor) t).executeScript("return document.readyState").toString();
+
 				return status.equals("complete");
 			};
 		});
 	}
 
 	/**
-	 * method for wait for given time
+	 * Method for Wait until element is visible.
 	 *
 	 * @param webElement
+	 *            {@link WebElement}
 	 * @param timeoutInSeconds
-	 * @throws Exception
 	 */
 	public void waitUntilVisibilityOfElementLocated(By webElement, long timeoutInSeconds) {
 		try {
-			WebDriverWait wait = new WebDriverWait(this.driver, timeoutInSeconds);
-
+			final WebDriverWait wait = new WebDriverWait(this.driver, timeoutInSeconds);
 			wait.until(ExpectedConditions.visibilityOfElementLocated(webElement));
-
-		} catch (TimeoutException e) {
-			logger.error(
-					"Timeout waiting for webelement to be present" + webElement.toString() + "->" + e.getMessage());
-		} catch (Exception e) {
-			logger.error("web element not be present " + webElement.toString() + "->" + e.getMessage());
+		} catch (final TimeoutException e) {
+			BasePage.logger
+					.error("Waiting Timeout finish for webelement" + webElement.toString() + "->" + e.getMessage());
 		}
-
 	}
-
 }
