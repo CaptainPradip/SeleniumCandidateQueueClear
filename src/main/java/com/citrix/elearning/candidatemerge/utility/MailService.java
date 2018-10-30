@@ -24,15 +24,23 @@ import com.sendgrid.SendGrid;
  *
  */
 public class MailService {
+	/**
+	 * Logger object use for logging .
+	 */
 	static Logger logger = Logger.getLogger(MailService.class);
 
 	/**
 	 * Method for send test result to mail and with attached excel file.
 	 *
 	 * @param fromEmail
+	 *            from which email id to send email.
 	 * @param subjectMail
+	 *            subject of email.
 	 * @param toMail
+	 *            to which email have to send email.
 	 * @param filePath
+	 *            file path which is having attache to email.
+	 *
 	 * @return {@link Response}
 	 * @throws IOException
 	 */
@@ -65,15 +73,15 @@ public class MailService {
 			request.setEndpoint("mail/send");
 			request.setBody(mail.build());
 			response = sg.api(request);
-			MailService.logger.info("Email is sent to" + toMail);
-			MailService.logger.info(response.getStatusCode());
-			MailService.logger.info(response.getBody());
-			MailService.logger.info(response.getHeaders());
+			logger.info("Email is sent to" + toMail);
+			logger.info(response.getStatusCode());
+			logger.info(response.getBody());
+			logger.info(response.getHeaders());
 			// System.out.println(response.getStatusCode());
 			// System.out.println(response.getBody());
 			// System.out.println(response.getHeaders());
 		} catch (IOException ex) {
-			MailService.logger.error(ex.getMessage());
+			logger.error(ex.getMessage());
 			throw ex;
 		}
 		return response;

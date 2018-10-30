@@ -80,6 +80,7 @@ public class CandidateProfile {
 	 * Method for set candidate Id.
 	 *
 	 * @param candidateId
+	 *            candidate id.
 	 */
 	public void setCandidateId(String candidateId) {
 		this.candidateId = candidateId;
@@ -89,6 +90,7 @@ public class CandidateProfile {
 	 * Method for set execution time.
 	 *
 	 * @param excutionTime
+	 *            total execution time
 	 */
 	public void setExecutionTime(String executionTime) {
 		this.executionTime = executionTime;
@@ -98,6 +100,7 @@ public class CandidateProfile {
 	 * Method for set first name.
 	 *
 	 * @param firstName
+	 *            candidate first name.
 	 */
 	public void setFirstName(String firstName) {
 		this.firstName = firstName;
@@ -107,6 +110,7 @@ public class CandidateProfile {
 	 * Method for set last name.
 	 *
 	 * @param lastName
+	 *            candidate last name.
 	 */
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
@@ -116,6 +120,7 @@ public class CandidateProfile {
 	 * Method for set Reason.
 	 *
 	 * @param reason
+	 *
 	 */
 	public void setReason(String reason) {
 		this.reason = reason;

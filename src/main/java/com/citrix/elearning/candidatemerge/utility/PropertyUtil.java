@@ -3,7 +3,7 @@ package com.citrix.elearning.candidatemerge.utility;
 import java.util.ResourceBundle;
 
 /**
- * This Class for read property file data.
+ * This class for reading property files data.
  *
  * @author Pradip.Nemane
  *
@@ -16,10 +16,12 @@ public class PropertyUtil {
 	 * Method for get value from property file using key.
 	 *
 	 * @param key
-	 * @return value
+	 *            key from property file.
+	 * @return value from property file.
+	 *
 	 */
 	public static String getProperty(String key) {
-		return PropertyUtil.bundle.getString(key);
+		return bundle.getString(key);
 	}
 
 }

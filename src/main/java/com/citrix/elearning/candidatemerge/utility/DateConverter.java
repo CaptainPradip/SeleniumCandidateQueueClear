@@ -5,7 +5,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
- * This class to for date conversion.
+ * This class contains date utilities.
  *
  * @author Pradip.Nemane
  *

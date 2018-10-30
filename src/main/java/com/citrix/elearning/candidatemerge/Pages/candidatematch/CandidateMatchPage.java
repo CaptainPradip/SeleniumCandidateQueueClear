@@ -9,7 +9,7 @@ import com.citrix.elearning.candidatemerge.Pages.BasePage;
 import com.citrix.elearning.candidatemerge.Pages.candidateprofile.CandidateReconciliationPage;
 
 /**
- * This class for get Matching page Candidate details.
+ * This class contains candidate matching page functionalities.
  *
  * @author Pradip.Nemane
  *
@@ -17,25 +17,25 @@ import com.citrix.elearning.candidatemerge.Pages.candidateprofile.CandidateRecon
 public class CandidateMatchPage extends BasePage {
 
 	/**
-	 * Web Element For CandidateId.
+	 * Web Element For Candidate Id.
 	 */
 	@FindBy(xpath = "//TABLE[2]/TBODY[1]/TR[4]/TD[9]")
-	WebElement matchCandidateIdLable;
+	WebElement matchCandidateIdLabel;
 
 	/**
-	 * Web Element for match Email.
+	 * Web Element for match email.
 	 */
 	@FindBy(xpath = "//TABLE[2]/TBODY[1]/TR[4]/TD[7]")
-	WebElement matchEmailLable;
+	WebElement matchEmailLabel;
 
 	/**
-	 * Web Element for First Name match.
+	 * Web Element for first name link.
 	 */
 	@FindBy(xpath = "//TABLE[2]/TBODY[1]/TR[4]/TD[3]")
 	WebElement matchFirstNameLink;
 
 	/**
-	 * Web element for Last Name Match.
+	 * Web element for last name link..
 	 */
 	@FindBy(xpath = "//TABLE[2]/TBODY[1]/TR[4]/TD[5]")
 	WebElement matchLastNameLink;
@@ -63,25 +63,25 @@ public class CandidateMatchPage extends BasePage {
 	}
 
 	/**
-	 * method to get candidate id.
+	 * Method to get candidate id.
 	 *
 	 * @return candidate id.
 	 */
 	public String getCandidateId() {
-		return getText(this.matchCandidateIdLable);
+		return getText(this.matchCandidateIdLabel);
 	}
 
 	/**
-	 * method to get email.
+	 * Method to get email.
 	 *
 	 * @return email .
 	 */
 	public String getEmail() {
-		return getText(this.matchEmailLable);
+		return getText(this.matchEmailLabel);
 	}
 
 	/**
-	 * method for get first name text.
+	 * Method for get first name text.
 	 *
 	 * @return first name.
 	 */
@@ -90,8 +90,8 @@ public class CandidateMatchPage extends BasePage {
 	}
 
 	/**
-	 * method to return Last name text.
-	 * 
+	 * Method to return Last name text.
+	 *
 	 * @return last name.
 	 */
 	public String getLastName() {

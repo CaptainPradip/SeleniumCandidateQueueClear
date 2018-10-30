@@ -14,7 +14,7 @@ import com.citrix.elearning.candidatemerge.Pages.BasePage;
 import com.citrix.elearning.candidatemerge.Pages.candidatematch.CandidateMatchPage;
 
 /**
- * This Class For candidate Queue page.
+ * This class for candidate queue page.
  *
  * @author Pradip.Nemane
  *
@@ -22,7 +22,7 @@ import com.citrix.elearning.candidatemerge.Pages.candidatematch.CandidateMatchPa
 public class CandidateQueuePage extends BasePage {
 
 	/**
-	 * Web Element for Candidate Queue Link.
+	 * Web Element for candidate queue link.
 	 */
 	@FindBy(xpath = "//A[contains(text(),'Candidate Queue')]")
 
@@ -45,7 +45,7 @@ public class CandidateQueuePage extends BasePage {
 	@FindBy(xpath = "//TABLE[1]/TBODY[1]/TR[1]/TD[6]//A")
 	WebElement tableFirstRow;
 	/**
-	 * Web Element for total number of candidate Queue record.
+	 * Web element for total number of candidate queue records.
 	 */
 	@FindBy(xpath = "//DIV[1]/DIV[2]/span")
 	WebElement totalNumberofCandidate;
@@ -62,7 +62,7 @@ public class CandidateQueuePage extends BasePage {
 	}
 
 	/**
-	 * Method for to Click on candidate Queue Link.
+	 * Method to Click on candidate Queue Link.
 	 *
 	 * @return {@link CandidateProfileMatchPage}
 	 */
@@ -74,9 +74,9 @@ public class CandidateQueuePage extends BasePage {
 	}
 
 	/**
-	 * Method for to Get First and Last Name.
+	 * Method to Get First and Last Name.
 	 *
-	 * @return name of candidate {@link String}
+	 * @return name of candidate.
 	 */
 	public String getName() {
 		return getText(this.tableFirstRow);
@@ -85,7 +85,7 @@ public class CandidateQueuePage extends BasePage {
 	/**
 	 * Method for Get Queue Date.
 	 *
-	 * @return {@link String}
+	 * @return queue date.
 	 */
 	public String getQueuedDate() {
 		return getText(this.queuedDate);
@@ -94,9 +94,9 @@ public class CandidateQueuePage extends BasePage {
 	/**
 	 * Method for get Total Candidate Queue Count.
 	 *
-	 * @return return no of record after search {@link Integer}
+	 * @return no of record after search.
 	 */
-	public int getTotalNumberofCandidateRecord() {
+	public int getTotalNumebrOfCandidateRecords() {
 		waitUntilPageLoad();
 		final String candidateWithResultText = getText(this.totalNumberofCandidate);
 		final int totalCandidate = Integer.parseInt(candidateWithResultText.split(" ")[0].trim());
@@ -111,16 +111,16 @@ public class CandidateQueuePage extends BasePage {
 	 * @param firstAndLastName
 	 *            candidate first and last name with comma(,) separated.
 	 * @return if candidate is present after merge then return false else true.
-	 *         {@link Boolean}
+	 *
 	 */
-	public boolean isMergeCandidate(String updatedDate, String firstAndLastName) {
+	public boolean isCandidateMerged(String updatedDate, String firstAndLastName) {
 
 		while (true) {
 			boolean searchElement = isDisplyed(
 					By.xpath("//tr/td[text()='" + updatedDate + "']/../td/a[text()='" + firstAndLastName + "']"));
 
 			this.totalNumberofCandidate = this.driver.findElement(By.xpath("//DIV[1]/DIV[2]/span"));
-			int count = getTotalNumberofCandidateRecord();
+			int count = getTotalNumebrOfCandidateRecords();
 
 			if ((count == 0) && (!searchElement)) {
 				return true;
@@ -132,14 +132,14 @@ public class CandidateQueuePage extends BasePage {
 			}
 
 			this.totalNumberofCandidate = this.driver.findElement(By.xpath("//DIV[1]/DIV[2]/span"));
-			count = getTotalNumberofCandidateRecord();
+			count = getTotalNumebrOfCandidateRecords();
 
 		}
 
 	}
 
 	/**
-	 * Method for to select and click on candidate Last Name.
+	 * Method for select and click on candidate Last Name.
 	 *
 	 * @return {@link CandidateProfileMatchPage}
 	 */
@@ -151,7 +151,7 @@ public class CandidateQueuePage extends BasePage {
 	}
 
 	/**
-	 * Method for enter first name and last name in search box.
+	 * Method for set candidate name in search box.
 	 *
 	 * @param firstAndLastName
 	 *            candidate first and last name with comma(,) separated.

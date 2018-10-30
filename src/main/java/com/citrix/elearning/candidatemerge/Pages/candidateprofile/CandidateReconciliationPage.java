@@ -8,7 +8,7 @@ import org.openqa.selenium.support.PageFactory;
 import com.citrix.elearning.candidatemerge.Pages.BasePage;
 
 /**
- * This class for Verifying Candidate Inbount and Master Details.
+ * This class for verifying candidate inbound and master record details.
  *
  * @author Pradip.Nemane
  *
@@ -22,13 +22,13 @@ public class CandidateReconciliationPage extends BasePage {
 	WebElement dontApplyToMasterLink;
 
 	/**
-	 * WebElement for inBound Primary Email WebElement.
+	 * WebElement for inBound Primary Email.
 	 */
 	@FindBy(xpath = "//table[@id='emailTableA']/tbody/tr/td/table/tbody/tr[2]/td[2]")
 	WebElement inboundPrimaryEmail;
 
 	/**
-	 * WebElement for Apply Inbound Record to Master Record link WebElement.
+	 * WebElement for Apply Inbound Record to Master Record link.
 	 */
 	@FindBy(linkText = "Apply Inbound Record to Master Record")
 	WebElement inBoundToMasterLink;
@@ -95,7 +95,7 @@ public class CandidateReconciliationPage extends BasePage {
 	/**
 	 * Method for get InBound primary Email text.
 	 *
-	 * @return {@link String} inbound primary email
+	 * @return inbound primary email
 	 */
 	public String getInboundPrimaryEmail() {
 
@@ -113,7 +113,7 @@ public class CandidateReconciliationPage extends BasePage {
 	}
 
 	/**
-	 * method get master email in text.
+	 * Method get master email in text.
 	 *
 	 * @return master primary email.
 	 */

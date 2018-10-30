@@ -13,11 +13,14 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 /**
- * This class for all generic Method call on all pages.
+ * This class for all generic Methods.
  *
  * @author Pradip.Nemane
  */
 public class BasePage {
+	/**
+	 * Logger object use for logging .
+	 */
 	static Logger logger = Logger.getLogger(BasePage.class);
 
 	/**
@@ -40,18 +43,14 @@ public class BasePage {
 	 * Click on Alert OK Button.
 	 */
 	public void alertAccept() {
-		if (isAlertPresent()) {
-			this.driver.switchTo().alert().accept();
-		}
+		this.driver.switchTo().alert().accept();
 	}
 
 	/**
 	 * Click On Alert Cancel Button.
 	 */
 	public void alertDismiss() {
-		if (isAlertPresent()) {
-			this.driver.switchTo().alert().dismiss();
-		}
+		this.driver.switchTo().alert().dismiss();
 	}
 
 	/**
@@ -67,7 +66,7 @@ public class BasePage {
 		highLighterMethod(element);
 		element.clear();
 		element.sendKeys(text);
-		BasePage.logger.info("send key to " + element.toString() + "---->" + text);
+		logger.info("send key to " + element.toString() + "---->" + text);
 	}
 
 	/**
@@ -78,7 +77,6 @@ public class BasePage {
 	 */
 	public void click(WebElement element) {
 		element.click();
-		BasePage.logger.info("click on " + element.toString());
 	}
 
 	/**
@@ -92,7 +90,7 @@ public class BasePage {
 		try {
 			return element.getText().trim();
 		} catch (final Exception e) {
-			BasePage.logger.error("element is not visible : " + element.toString() + "->" + e.getMessage());
+			logger.error("element is not visible : " + element.toString() + "->" + e.getMessage());
 			return null;
 		}
 	}
@@ -112,7 +110,7 @@ public class BasePage {
 	/**
 	 * Method to check Alert is Present.
 	 *
-	 * @return return true if alert is present else false.
+	 * @return true if alert is present else false.
 	 */
 	public boolean isAlertPresent() {
 		try {
@@ -120,7 +118,7 @@ public class BasePage {
 			wait.until(ExpectedConditions.alertIsPresent());
 			return true;
 		} catch (final TimeoutException e) {
-			BasePage.logger.error("Alert  is not visible : " + e.getMessage());
+			logger.error("Alert  is not visible : " + e.getMessage());
 			return false;
 		}
 	}
@@ -138,7 +136,7 @@ public class BasePage {
 			return true;
 		} catch (final Exception e) {
 
-			BasePage.logger.error("element is not visible : " + element.toString() + "->" + e.getMessage());
+			logger.error("element is not visible : " + element.toString() + "->" + e.getMessage());
 		}
 		return false;
 	}
@@ -154,7 +152,7 @@ public class BasePage {
 		try {
 			return element.isDisplayed();
 		} catch (final Exception e) {
-			BasePage.logger.error("element is not visible : " + element.toString() + "->" + e.getMessage());
+			logger.error("element is not visible : " + element.toString() + "->" + e.getMessage());
 		}
 		return false;
 	}
@@ -185,8 +183,7 @@ public class BasePage {
 			final WebDriverWait wait = new WebDriverWait(this.driver, timeoutInSeconds);
 			wait.until(ExpectedConditions.elementToBeClickable(webElement));
 		} catch (final TimeoutException e) {
-			BasePage.logger
-					.error("Waiting Timeout finish for webelement" + webElement.toString() + "->" + e.getMessage());
+			logger.error("Waiting Timeout finish for webelement" + webElement.toString() + "->" + e.getMessage());
 		}
 	}
 
@@ -202,8 +199,7 @@ public class BasePage {
 			final WebDriverWait wait = new WebDriverWait(this.driver, timeoutInSeconds);
 			wait.until(ExpectedConditions.elementToBeClickable(webElement));
 		} catch (final TimeoutException e) {
-			BasePage.logger
-					.error("Waiting Timeout finish for webelement" + webElement.toString() + "->" + e.getMessage());
+			logger.error("Waiting Timeout finish for webelement" + webElement.toString() + "->" + e.getMessage());
 		}
 	}
 
@@ -234,8 +230,7 @@ public class BasePage {
 			final WebDriverWait wait = new WebDriverWait(this.driver, timeoutInSeconds);
 			wait.until(ExpectedConditions.visibilityOfElementLocated(webElement));
 		} catch (final TimeoutException e) {
-			BasePage.logger
-					.error("Waiting Timeout finish for webelement" + webElement.toString() + "->" + e.getMessage());
+			logger.error("Waiting Timeout finish for webelement" + webElement.toString() + "->" + e.getMessage());
 		}
 	}
 }

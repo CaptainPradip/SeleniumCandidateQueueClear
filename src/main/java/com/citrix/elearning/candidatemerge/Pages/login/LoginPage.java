@@ -9,7 +9,7 @@ import com.citrix.elearning.candidatemerge.Pages.BasePage;
 import com.citrix.elearning.candidatemerge.Pages.candidatequeue.CandidateQueuePage;
 
 /**
- * This Class for Login Page.
+ * This class for login page.
  *
  * @author Pradip.Nemane
  *
@@ -54,16 +54,16 @@ public class LoginPage extends BasePage {
 	/**
 	 * Method for login to application.
 	 *
-	 * @param username
+	 * @param username.
 	 *            {@link username}
 	 *
-	 * @param password
+	 * @param password.
 	 *            {@link password}}
 	 * @return {@link CandidateQueuePage}
 	 *
 	 */
 	public CandidateQueuePage login(String username, String password) {
-		setusernameTextBox(username);
+		setUsernameTextBox(username);
 		setPasswordTextBox(password);
 		clickOnSubmitButton();
 		waitUntilPageLoad();
@@ -71,9 +71,9 @@ public class LoginPage extends BasePage {
 	}
 
 	/**
-	 * the password to set
+	 * Method for set password.
 	 *
-	 * @param password
+	 * @param password.
 	 */
 	public void setPasswordTextBox(String password) {
 		highLighterMethod(this.passwordTextBox);
@@ -81,11 +81,11 @@ public class LoginPage extends BasePage {
 	}
 
 	/**
-	 * the username to set
+	 * Method for set user name.
 	 *
 	 * @param username
 	 */
-	public void setusernameTextBox(String username) {
+	public void setUsernameTextBox(String username) {
 		clearAndType(this.usernameTextBox, username);
 	}
 }

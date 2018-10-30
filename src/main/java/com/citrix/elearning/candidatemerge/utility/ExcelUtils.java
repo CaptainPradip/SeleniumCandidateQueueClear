@@ -15,7 +15,7 @@ import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 /**
- * This Class for Excel Writing and Reading
+ * This class for excel writing and reading.
  *
  * @author Pradip.Nemane
  *
@@ -34,12 +34,12 @@ public class ExcelUtils {
 		XSSFWorkbook workbook = new XSSFWorkbook();
 		XSSFSheet sheet = workbook.createSheet();
 
-		FileOutputStream out = new FileOutputStream(ExcelUtils.filePath);
+		FileOutputStream out = new FileOutputStream(filePath);
 
 		workbook.write(out);
 		workbook.close();
 		out.close();
-		return ExcelUtils.filePath;
+		return filePath;
 	}
 
 	/**
@@ -49,7 +49,7 @@ public class ExcelUtils {
 	 * @throws IOException
 	 */
 	private static Workbook getWorkbook() throws IOException {
-		File file = new File(ExcelUtils.filePath);
+		File file = new File(filePath);
 		Workbook workbook = null;
 		try {
 
@@ -70,8 +70,8 @@ public class ExcelUtils {
 	 */
 	public static String writeDataIntoExcel(List<CandidateProfile> candidateProfile) {
 		try {
-			ExcelUtils.createResultFileAndGetPath();
-			Workbook workbook = ExcelUtils.getWorkbook();
+			createResultFileAndGetPath();
+			Workbook workbook = getWorkbook();
 
 			Sheet spreadSheet = workbook.getSheetAt(0);
 			Row row = spreadSheet.createRow(0);
@@ -127,7 +127,7 @@ public class ExcelUtils {
 
 			}
 
-			FileOutputStream output_file = new FileOutputStream(ExcelUtils.filePath);
+			FileOutputStream output_file = new FileOutputStream(filePath);
 			workbook.write(output_file);
 			workbook.close();
 			output_file.close();
@@ -136,7 +136,7 @@ public class ExcelUtils {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
-		return ExcelUtils.filePath;
+		return filePath;
 
 	}
 }
