@@ -8,21 +8,28 @@ import java.io.InputStream;
 import java.util.List;
 
 import org.apache.poi.ss.usermodel.Cell;
-import org.apache.poi.ss.usermodel.CellStyle;
-import org.apache.poi.ss.usermodel.FillPatternType;
-import org.apache.poi.ss.usermodel.IndexedColors;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
+/**
+ * This class for excel writing and reading.
+ *
+ * @author Pradip.Nemane
+ *
+ */
 public class ExcelUtils {
 
 	static String filePath = PropertyUtil.getProperty("filePath");;
 
-	// This method is just for creating 4 results files in a folder based on
-	// sheet name
+	/**
+	 * Method for create result file.
+	 *
+	 * @return file path.
+	 * @throws IOException
+	 */
 	public static String createResultFileAndGetPath() throws IOException {
 		XSSFWorkbook workbook = new XSSFWorkbook();
 		XSSFSheet sheet = workbook.createSheet();
@@ -35,24 +42,36 @@ public class ExcelUtils {
 		return filePath;
 	}
 
-	private static Workbook readExcel() throws IOException {
+	/**
+	 * Method for get Workbook
+	 *
+	 * @return {@link Workbook}
+	 * @throws IOException
+	 */
+	private static Workbook getWorkbook() throws IOException {
 		File file = new File(filePath);
-		Workbook Workbook = null;
+		Workbook workbook = null;
 		try {
 
 			InputStream is = new FileInputStream(file);
-			Workbook = new XSSFWorkbook(is);
+			workbook = new XSSFWorkbook(is);
 
 		} catch (Exception e) {
 
 		}
-		return Workbook;
+		return workbook;
 	}
 
+	/**
+	 * Method for Write date into Excel file.
+	 *
+	 * @param candidateProfile
+	 * @return file path.
+	 */
 	public static String writeDataIntoExcel(List<CandidateProfile> candidateProfile) {
 		try {
 			createResultFileAndGetPath();
-			Workbook workbook = readExcel();
+			Workbook workbook = getWorkbook();
 
 			Sheet spreadSheet = workbook.getSheetAt(0);
 			Row row = spreadSheet.createRow(0);
@@ -62,24 +81,24 @@ public class ExcelUtils {
 			cell = row.createCell(0);
 			// Writing value into cell
 			cell.setCellValue("Sr No.");
+
 			cell = row.createCell(1);
 			// Writing value into cell
 			cell.setCellValue("Candidate Id");
+
 			cell = row.createCell(2);
 			// Writing value into cell
 			cell.setCellValue("First Name");
+
 			cell = row.createCell(3);
 			// Writing value into cell
 			cell.setCellValue("Last Name");
+
 			cell = row.createCell(4);
 			// Writing value into cell
-
-			// Writing value into cell
-			cell.setCellValue("Reason");
-			cell = row.createCell(5);
-			// Writing value into cell
 			cell.setCellValue("Test Result");
-			cell = row.createCell(6);
+
+			cell = row.createCell(5);
 			// Writing value into cell
 			cell.setCellValue("Excution Time");
 
@@ -104,23 +123,7 @@ public class ExcelUtils {
 				cell.setCellValue(profile.getReason());
 
 				cell = row.createCell(5);
-				if (profile.getTestResult().equals("Pass")) {
-					CellStyle style = workbook.createCellStyle();
-					style.setFillForegroundColor(IndexedColors.LIGHT_GREEN.getIndex());
-					style.setFillPattern(FillPatternType.SOLID_FOREGROUND);
-					cell.setCellStyle(style);
-					cell.setCellValue(profile.getTestResult().toString().trim());
-					cell = row.createCell(6);
-				} else {
-					CellStyle style = workbook.createCellStyle();
-					style.setFillForegroundColor(IndexedColors.RED.getIndex());
-					style.setFillPattern(FillPatternType.SOLID_FOREGROUND);
-					cell.setCellStyle(style);
-					cell.setCellValue(profile.getTestResult().toString().trim());
-					cell = row.createCell(6);
-				}
-
-				cell.setCellValue(profile.getExcutionTime().toString().trim());
+				cell.setCellValue(profile.getExecutionTime().toString().trim());
 
 			}
 

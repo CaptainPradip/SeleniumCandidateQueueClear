@@ -5,7 +5,6 @@ import java.util.regex.Pattern;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
-import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -15,6 +14,7 @@ import com.citrix.elearning.candidatemerge.Pages.BasePage;
 import com.citrix.elearning.candidatemerge.Pages.candidatematch.CandidateMatchPage;
 
 /**
+ * This class for candidate queue page.
  *
  * @author Pradip.Nemane
  *
@@ -22,36 +22,36 @@ import com.citrix.elearning.candidatemerge.Pages.candidatematch.CandidateMatchPa
 public class CandidateQueuePage extends BasePage {
 
 	/**
-	 * Candidate Queue Link
+	 * Web Element for candidate queue link.
 	 */
 	@FindBy(xpath = "//A[contains(text(),'Candidate Queue')]")
 
 	WebElement candidateQueueLink;
 
 	/**
-	 * Name Search TextBox webElement
+	 * Web Element for Name Search TextBox.
 	 */
 	@FindBy(xpath = "//TABLE[1]/THEAD[1]/TR[1]/th[6]/input")
 	WebElement nameSearchTextBox;
 	/**
-	 * for updated date of first Candidate
+	 * Web Element for Queue date of first Candidate.
 	 */
 	@FindBy(xpath = "//FORM[1]/TABLE[1]/TBODY[1]/TR[1]/td[1]")
 	WebElement queuedDate;
 
 	/**
-	 * Candidate table first element
+	 * Web Element for Candidate table first element.
 	 */
 	@FindBy(xpath = "//TABLE[1]/TBODY[1]/TR[1]/TD[6]//A")
 	WebElement tableFirstRow;
 	/**
-	 * total number of candidate Queue
+	 * Web element for total number of candidate queue records.
 	 */
 	@FindBy(xpath = "//DIV[1]/DIV[2]/span")
 	WebElement totalNumberofCandidate;
 
 	/**
-	 * Constructor initialization
+	 * Constructor initialization.
 	 *
 	 * @param driver
 	 *            {@link WebDriver}
@@ -62,97 +62,88 @@ public class CandidateQueuePage extends BasePage {
 	}
 
 	/**
-	 * to Click on candidate Queue Link
-	 *
-	 * @return
+	 * Method to Click on candidate Queue Link.
 	 *
 	 * @return {@link CandidateProfileMatchPage}
 	 */
 	public CandidateQueuePage clickOnCandidateLink() {
 		highLighterMethod(this.candidateQueueLink);
-
 		click(this.candidateQueueLink);
 		waitUntilPageLoad();
 		return new CandidateQueuePage(this.driver);
 	}
 
 	/**
-	 * Get First and last name
+	 * Method to Get First and Last Name.
 	 *
-	 * @return {@link String}
+	 * @return name of candidate.
 	 */
-	public String getFirstAndLastName() {
-
+	public String getName() {
 		return getText(this.tableFirstRow);
 	}
 
 	/**
-	 * Get Updated Date
+	 * Method for Get Queue Date.
 	 *
-	 * @return {@link String}
+	 * @return queue date.
 	 */
 	public String getQueuedDate() {
 		return getText(this.queuedDate);
 	}
 
 	/**
-	 * for get Total Candidate Queue Count .
+	 * Method for get Total Candidate Queue Count.
 	 *
-	 * @return {@link Integer}
+	 * @return no of record after search.
 	 */
-	public int getTotalNumberofCandidatePresent() {
+	public int getTotalNumebrOfCandidateRecords() {
 		waitUntilPageLoad();
-		String candidateWithResultText = getText(this.totalNumberofCandidate);
-		int totalCandidate = Integer.parseInt(candidateWithResultText.split(" ")[0].trim());
+		final String candidateWithResultText = getText(this.totalNumberofCandidate);
+		final int totalCandidate = Integer.parseInt(candidateWithResultText.split(" ")[0].trim());
 		return totalCandidate;
-
 	}
 
 	/**
-	 * Verifying Candidate is removed from Queue
+	 * Verifying Candidate is removed from Queue.
 	 *
 	 * @param updatedDate
-	 *            candidate profile update date
+	 *            candidate profile update date.
 	 * @param firstAndLastName
-	 *            candidate first and last name with comma(,) separated
-	 * @return {@link Boolean}
+	 *            candidate first and last name with comma(,) separated.
+	 * @return if candidate is present after merge then return false else true.
+	 *
 	 */
-	public boolean isMergeCandidate(String updatedDate, String firstAndLastName) {
-		WebElement searchElement = null;
-		while (true) {
-			try {
-				searchElement = this.driver.findElement(
-						By.xpath("//tr/td[text()='" + updatedDate + "']/../td/a[text()='" + firstAndLastName + "']"));
-			} catch (NoSuchElementException e) {
+	public boolean isCandidateMerged(String updatedDate, String firstAndLastName) {
 
-			}
+		while (true) {
+			boolean searchElement = isDisplyed(
+					By.xpath("//tr/td[text()='" + updatedDate + "']/../td/a[text()='" + firstAndLastName + "']"));
 
 			this.totalNumberofCandidate = this.driver.findElement(By.xpath("//DIV[1]/DIV[2]/span"));
-			int count = getTotalNumberofCandidatePresent();
+			int count = getTotalNumebrOfCandidateRecords();
 
-			if (count == 0 && searchElement == null) {
+			if ((count == 0) && (!searchElement)) {
 				return true;
 			}
-			Pattern p = Pattern.compile("([1-5])");
-			Matcher m = p.matcher((Integer.toString(count)));
+			final Pattern p = Pattern.compile("([1-5])");
+			final Matcher m = p.matcher((Integer.toString(count)));
 			if (m.matches()) {
 				return false;
 			}
 
 			this.totalNumberofCandidate = this.driver.findElement(By.xpath("//DIV[1]/DIV[2]/span"));
-			count = getTotalNumberofCandidatePresent();
+			count = getTotalNumebrOfCandidateRecords();
 
 		}
 
 	}
 
 	/**
-	 * to select and click on candidate Last Name
+	 * Method for select and click on candidate Last Name.
 	 *
 	 * @return {@link CandidateProfileMatchPage}
 	 */
 	public CandidateMatchPage selectAndClickCandidateNameLink() {
-
 		highLighterMethod(this.tableFirstRow);
 		click(this.tableFirstRow);
 		waitUntilPageLoad();
@@ -160,10 +151,10 @@ public class CandidateQueuePage extends BasePage {
 	}
 
 	/**
-	 * enter First name and last in search box
+	 * Method for set candidate name in search box.
 	 *
 	 * @param firstAndLastName
-	 *            candidate first and last name with comma(,) separated
+	 *            candidate first and last name with comma(,) separated.
 	 */
 	public void setNameSearchTextBoxAndSearch(String firstAndLastName) {
 		clearAndType(this.nameSearchTextBox, firstAndLastName);

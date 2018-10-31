@@ -19,8 +19,16 @@ import com.citrix.elearning.candidatemerge.utility.ExcelUtils;
 import com.citrix.elearning.candidatemerge.utility.MailService;
 import com.citrix.elearning.candidatemerge.utility.PropertyUtil;
 
+/**
+ * This test class contains common test functionalities.
+ *
+ * @author Pradip.Nemane
+ *
+ */
 public class BaseTest {
-
+	/**
+	 * Logger object use for logging .
+	 */
 	static Logger logger = Logger.getLogger(BaseTest.class.getName());
 	public String baseUrl = PropertyUtil.getProperty("baseUrl");
 	List<CandidateProfile> candidateProfile = new ArrayList<CandidateProfile>();
@@ -28,26 +36,26 @@ public class BaseTest {
 	protected WebDriver driver;
 
 	/**
-	 * @return Object[][] where first column contains 'author' and second column
-	 *         contains 'searchKey'
+	 * Method from set data for test case.
+	 *
+	 * @return Object[][]
 	 */
-
 	@DataProvider(name = "CandidateCount")
 	public Object[][] getCandidateCount() {
-		Object[][] count = new Object[this.candidateQueuePage.getTotalNumberofCandidatePresent()][1];
-		for (int i = 0; i < this.candidateQueuePage.getTotalNumberofCandidatePresent(); i++) {
+		Object[][] count = new Object[this.candidateQueuePage.getTotalNumebrOfCandidateRecords()][1];
+		for (int i = 0; i < this.candidateQueuePage.getTotalNumebrOfCandidateRecords(); i++) {
 			count[i][0] = i;
-
 		}
 		return count;
 
 	}
 
 	/**
-	 * method for get driver instance
+	 * Method to get webdriver instance.
 	 *
 	 * @param browserName
-	 * @return
+	 *            browser name for run test.
+	 * @return {@link WebDriver}
 	 */
 	private WebDriver getWebDriver(String browserName) {
 		if (browserName.equals("chrome")) {
@@ -58,11 +66,10 @@ public class BaseTest {
 			this.driver = new FirefoxDriver();
 		}
 		return this.driver;
-
 	}
 
 	/**
-	 * method to mail result data
+	 * Method to mail result data
 	 *
 	 * @param candidateProfile
 	 *            list of candidate profile
@@ -76,37 +83,31 @@ public class BaseTest {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-
 	}
 
 	/**
-	 * method for setup before Test Start
+	 * Method for setup before Test Start
 	 */
 	@BeforeTest
 	public void setUp() {
 		final String browser = PropertyUtil.getProperty("driver");
 		getWebDriver(browser);
-
 		this.driver.get(this.baseUrl);
 		this.driver.manage().window().maximize();
-
 		LoginPage loginPage = new LoginPage(this.driver);
 		this.candidateQueuePage = loginPage.login(PropertyUtil.getProperty("username"),
 				PropertyUtil.getProperty("password"));
-
 		this.candidateQueuePage.clickOnCandidateLink();
-
 	}
 
 	/**
-	 * method to quit browser
+	 * Method to quit browser and send test result.
 	 */
 	@AfterTest
 	public void tearDown() {
 		if (this.driver != null) {
 			this.driver.quit();
 		}
-		// mailTestCaseResult(this.candidateProfile);
+		mailTestCaseResult(this.candidateProfile);
 	}
-
 }

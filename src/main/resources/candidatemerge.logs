@@ -1,0 +1,2 @@
+15:04:39,346  INFO com.citrix.elearning.candidatemerge.Pages.BasePage<strong>{1}</strong>:69 - send key to [[ChromeDriver: chrome on XP (bc17d1e73d12d385f614a18c492d6a1d)] -> name: username]---->RahulS
+15:05:01,690  INFO com.citrix.elearning.candidatemerge.test.BaseTest<strong>{1}</strong>:31 - Click on Candidate Queue !!
