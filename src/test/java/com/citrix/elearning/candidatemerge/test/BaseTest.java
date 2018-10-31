@@ -101,7 +101,7 @@ public class BaseTest {
 	}
 
 	/**
-	 * Method to quit browser
+	 * Method to quit browser and send test result.
 	 */
 	@AfterTest
 	public void tearDown() {

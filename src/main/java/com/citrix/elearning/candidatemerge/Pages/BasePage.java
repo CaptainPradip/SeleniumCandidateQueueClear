@@ -80,6 +80,16 @@ public class BasePage {
 	}
 
 	/**
+	 * Method for get text from Alert.
+	 *
+	 * @return text from alert.
+	 */
+	public String getAlertText() {
+
+		return this.driver.switchTo().alert().getText().trim();
+	}
+
+	/**
 	 * Method to get WebElement Visible Text.
 	 *
 	 * @param element
